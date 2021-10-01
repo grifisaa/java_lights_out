@@ -68,6 +68,7 @@ The server can be started in one of three ways (depending on your installation)
    
 Once the server is up and running, you should see something like the following:
 
+![Server Screenshot](docs/images/server_screenshot.png)
 
 Once the server is running, it can be stopped by simply killing it using Ctrl-C or the like. But, keep the server running and turn your attention to the Client.
 
@@ -104,8 +105,11 @@ The client can be started in one of three ways (depending on your installation)
    
 Once running, the client should open a window similar to the following:
 
+![Connect Form Screenshot](docs/images/connect_form_screenshot.png)
 
 Here you simply need to put in the address (host name) for the server (if running on the same machine as the client, localhost will do), and then enter the port number (7000). Once you have entered that information, go ahead and press the "Connect" button (note: if you made a mistake go ahead and press the reset button to clear the form and try again). When successful, you should see the game board displayed. This will look something like the following screenshot:
+
+![Game Board Screenshot](docs/images/board_screenshot.png)
 
 On the gameboard, you have four options:
 
