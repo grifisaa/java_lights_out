@@ -35,18 +35,15 @@ import static io.javalin.apibuilder.ApiBuilder.post;
  */
 public class LOServer {
 
-    /**
-     * Entry point from the command line
-     *
-     * @param args Command line arguments (currently nothing is supported)
-     */
-    public static void main(String[] args) {
+    private Javalin app;
+
+    public LOServer() {
         Game game = new Game();
         QueuedThreadPool queuedThreadPool = new QueuedThreadPool(200, 8, 60000);
 
-        Javalin app = Javalin.create(config ->
+        app = Javalin.create(config ->
                 config.server(() ->
-                        new Server(queuedThreadPool))).start(7000);
+                        new Server(queuedThreadPool)));
 
         app.routes(() -> {
             get("/api/state", ctx -> ctx.json(game.getState()));
@@ -55,6 +52,8 @@ public class LOServer {
                     List<Integer> list = ctx.bodyAsClass(List.class);
                     game.update(list.get(0), list.get(1));
                     ctx.json(game.getState());
+                } else {
+                    ctx.result("");
                 }
             });
             get("/api/reset", ctx -> {
@@ -65,5 +64,18 @@ public class LOServer {
                 ctx.result("OK");
             });
         });
+    }
+
+    public Javalin getApp() {
+        return app;
+    }
+
+    /**
+     * Entry point from the command line
+     *
+     * @param args Command line arguments (currently nothing is supported)
+     */
+    public static void main(String[] args) {
+        new LOServer().getApp().start(7000);
     }
 }

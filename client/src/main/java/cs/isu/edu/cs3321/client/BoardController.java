@@ -63,7 +63,6 @@ public class BoardController {
     @FXML
     protected void handleBoardButtonAction(ActionEvent event) {
         Object src = event.getSource();
-        EventTarget targ = event.getTarget();
         if (src instanceof Button) {
             Button btn = (Button) src;
             Node node = null;
